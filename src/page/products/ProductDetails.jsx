@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import axios from "axios";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import { useAuth } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import useCart from "../../hooks/useCart";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
   const { user } = useAuth();
+  const [, refetch] = useCart()
   // const productsDetails = location.state?.productData || {};
   const [productsDetails, setProductsDetails] = useState([]);
   const [selectedImage, setSelectedImage] = useState(
@@ -23,10 +24,6 @@ const ProductDetails = () => {
     productsDetails.attributes ? productsDetails.attributes[0].value : null
   );
 
-  const [quantity, setQuantity] = useState("1");
-  // const [isLoading, setIsLoading] = useState(false);
-  const [attributes, setAttributes] = useState([]);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,10 +40,10 @@ const ProductDetails = () => {
         setSelectedSize(
           product.attributes ? product.attributes[0].value : null
         );
-        setIsLoading(false); // Set loading state to false once data is fetched
+        setIsLoading(false); 
       } catch (error) {
         console.error("Error fetching products:", error);
-        setIsLoading(false); // Handle error and set loading state to false
+        setIsLoading(false); 
       }
     };
 
@@ -71,32 +68,35 @@ const ProductDetails = () => {
   const handleSizeChange = (size) => {
     setSelectedSize(size);
   };
-  console.log(user?.email);
+  console.log('what email',user?.email);
   const handleCartAdd = async () => {
-    if (user) {
+    if (user && user.email) {
       const productData = {
-        name: productsDetails?.name,
+        name: productsDetails?.title,
         price: productsDetails?.sale_price,
-        email: user?.email,
-        userId: user?._id,
-        productId: productsDetails._id,
+        productId: productsDetails?._id,
+        image: selectedImage
       };
 
+     
       try {
         const response = await axios.post(
           "https://classicit.onrender.com/api/cart",
           {
-            productData: productData,
+            email: user?.email,  
+            userId: user?._id,   
+            productData: productData
           }
         );
 
         console.log("data cart", response);
 
         if (response.data._id) {
+          refetch()
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your work has been saved",
+            title: "Add to Cart",
             showConfirmButton: false,
             timer: 1500,
           });
