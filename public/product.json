@@ -1,0 +1,155 @@
+[
+    {
+      "productId": "dress-product-id-1",
+      "title": "Elegant Evening Gown",
+      "brand": "GlamourStyles",
+      "reg_price": "250",
+      "sale_price": "200",
+      "stock": "15",
+      "images": [
+        {
+          "id": "image-id-blue",
+          "color": "Blue",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1670308385/phmdddwrqghbqq2ggx74.webp"
+        },
+        {
+          "id": "image-id-black",
+          "color": "Black",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1676416383/sc1sfgitj3qojzf3rw1x.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "label": "Dresses",
+          "value": "Dresses"
+        }
+      ],
+      "product_des": "<p>Make a statement at your next event with this elegant evening gown. The gown features a timeless design and is crafted from high-quality fabric for a luxurious feel.</p>",
+      "offerDate": "2024-03-20T18:30:00.000Z",
+      "attributes": [
+        {
+          "name": "Size",
+          "value": "S"
+        },
+        {
+          "name": "Size",
+          "value": "L"
+        }
+      ]
+    },
+    {
+      "productId": "dress-product-id-2",
+      "title": "Summer Floral Dress",
+      "brand": "TrendyStyles",
+      "reg_price": "120",
+      "sale_price": "100",
+      "stock": "20",
+      "images": [
+        {
+          "id": "image-id-red",
+          "color": "Red",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1676416383/yb3vd0xkgbgsqpx4md0d.jpg"
+        },
+        {
+          "id": "image-id-white",
+          "color": "White",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1670308385/hmwljf5kcr7mmz0kqmnb.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "label": "Dresses",
+          "value": "Dresses"
+        }
+      ],
+      "product_des": "<p>Stay stylish and comfortable in this summer floral dress. The dress features a vibrant floral pattern and is made from breathable fabric.</p>",
+      "offerDate": "2024-02-16T14:45:00.000Z",
+      "attributes": [
+        {
+          "name": "Size",
+          "value": "M"
+        },
+        {
+          "name": "Size",
+          "value": "XL"
+        }
+      ]
+    },
+    {
+      "productId": "dress-product-id-3",
+      "title": "Casual Summer Dress",
+      "brand": "RelaxWear",
+      "reg_price": "80",
+      "sale_price": "70",
+      "stock": "25",
+      "images": [
+        {
+          "id": "image-id-yellow",
+          "color": "Yellow",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1676415812/sbdend5m0y7gwunbzgxa.jpg"
+        },
+        {
+          "id": "image-id-green",
+          "color": "Green",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1676415812/y02syvfxbddvuonqdxvm.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "label": "Dresses",
+          "value": "Dresses"
+        }
+      ],
+      "product_des": "<p>Stay cool and stylish in this casual summer dress. Perfect for a day out or a beach trip, the dress offers comfort without compromising on fashion.</p>",
+      "offerDate": "2024-04-15T12:00:00.000Z",
+      "attributes": [
+        {
+          "name": "Size",
+          "value": "XS"
+        },
+        {
+          "name": "Size",
+          "value": "M"
+        }
+      ]
+    },
+    {
+      "productId": "dress-product-id-4",
+      "title": "Chic Midi Dress",
+      "brand": "ChicFashion",
+      "reg_price": "150",
+      "sale_price": "120",
+      "stock": "18",
+      "images": [
+        {
+          "id": "image-id-pink",
+          "color": "Pink",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1676415834/o0bij1ozad9wfhgsqpnk.jpg"
+        },
+        {
+          "id": "image-id-grey",
+          "color": "Grey",
+          "src": "https://res.cloudinary.com/df8velsbs/image/upload/v1676415834/lxuqyerhgzymtzfzb4at.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "label": "Dresses",
+          "value": "Dresses"
+        }
+      ],
+      "product_des": "<p>Add a touch of elegance to your wardrobe with this chic midi dress. The dress is versatile and can be dressed up or down for various occasions.</p>",
+      "offerDate": "2024-05-10T15:45:00.000Z",
+      "attributes": [
+        {
+          "name": "Size",
+          "value": "L"
+        },
+        {
+          "name": "Size",
+          "value": "XL"
+        }
+      ]
+    }
+  ]
+  
