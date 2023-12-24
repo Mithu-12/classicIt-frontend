@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CowndownTimer from "../../components/CowntownTimer/CowndownTimer";
+import LoaderSpiner from "../../components/Loader/LoaderSpiner";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   console.log("products", products);
 
   useEffect(() => {
@@ -16,8 +17,10 @@ const Products = () => {
         );
         console.log(response.data);
         setProducts(response.data);
+        setLoading(false); 
       } catch (error) {
         console.error("Error fetching products:", error);
+        setLoading(false); 
       }
     };
 
@@ -29,7 +32,8 @@ const Products = () => {
       <h2 className="text-4xl font-bold text-center  py-4">
         SPECIALS <span className="text-yellow-400">OFFER</span>
       </h2>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5">
+      {loading? <LoaderSpiner/>: (
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5">
         {products.map((product) => (
           <div
             key={product._id}
@@ -78,38 +82,10 @@ const Products = () => {
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 };
 
 export default Products;
 
-{
-  /* <div
-key={product._id}
-className="bg-white shadow-inner overflow-hidden single-card lg:mx-6"
->
-<div className="relative group">
-  <div
-    style={{ height: "300px" }}
-    className="z-100 overflow-hidden"
-  >
-    
-    <img
-      src={product.images[0]?.src}
-      className="select-none w-full h-full img z-0 group-hover:hidden block transition object-contain"
-      alt=""
-    />
-
-    
-    <img
-      src={product.images[1]?.src}
-      className="w-full select-none h-full hoverImg group-hover:block hidden transition object-center object-contain"
-      alt=""
-    />
-  </div>
-  {/* ... (rest of the code) */
-}
-// </div>
-// {/* ... (rest of the code) */}
-// </div> */}

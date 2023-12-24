@@ -6,6 +6,7 @@ import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import { useAuth } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import useCart from "../../hooks/useCart";
+import LoaderSpiner from "../../components/Loader/LoaderSpiner";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -125,7 +126,7 @@ const ProductDetails = () => {
     <ContentWrapper>
     <div className="py-8 md:py-16 lg:py-20">
       {isLoading ? (
-        <div>Loading...</div>
+        <LoaderSpiner/>
       ) : (
         <div>
           <div className="lg:flex gap-5">
