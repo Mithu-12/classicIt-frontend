@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import axios from "axios";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import { useAuth } from "../../context/AuthContext";
@@ -129,26 +123,30 @@ const ProductDetails = () => {
   console.log("single", productsDetails);
   return (
     <ContentWrapper>
-      <div className="py-20">
-        {isLoading ? (
-          <div>loading</div>
-        ) : (
-          <div>
-            <div className="flex gap-5">
+    <div className="py-8 md:py-16 lg:py-20">
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <div className="lg:flex gap-5">
+            <div className="lg:w-1/2">
               <div className="flex border p-5">
                 <div>
                   <div className="border">
                     <img
                       src={selectedImage.src}
-                      // alt={selectedImage.color}
                       style={{ width: "300px", height: "300px" }}
+                      alt={selectedImage.color}
                     />
                   </div>
                   <div className="flex flex-row gap-3 pt-5">
                     <p className="text-slate-400 font-bold">Select Color:</p>
                     <p>
                       {productsDetails.images.map((image) => (
-                        <label key={image.id} style={{ marginRight: "10px" }}>
+                        <label
+                          key={image.id}
+                          style={{ marginRight: "10px" }}
+                        >
                           <input
                             type="radio"
                             name="color"
@@ -162,7 +160,6 @@ const ProductDetails = () => {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex flex-col pl-5">
                   {productsDetails.images.map((image) => (
                     <div
@@ -179,50 +176,56 @@ const ProductDetails = () => {
                   ))}
                 </div>
               </div>
-              <div>
-                <h2 className="font-bold text-2xl">{productsDetails?.title}</h2>
+            </div>
+            <div className="lg:w-1/2 mt-5 lg:mt-0">
+              <h2 className="font-bold text-2xl">
+                {productsDetails?.title}
+              </h2>
 
-                <div className="flex flex-row gap-3 py-2">
-                  <p className="text-amber-400 font-semibold">Select Size:</p>
-                  <p>
-                    {productsDetails.attributes.map((size) => (
-                      <label key={size.id} style={{ marginRight: "10px" }}>
-                        <input
-                          type="radio"
-                          name="size"
-                          value={size.value}
-                          checked={selectedSize === size.value}
-                          onChange={() => handleSizeChange(size.value)}
-                        />
-                        {size.value}
-                      </label>
-                    ))}
-                  </p>
-                </div>
+              <div className="flex flex-row gap-3 py-2">
+                <p className="text-amber-400 font-semibold">Select Size:</p>
+                <p>
+                  {productsDetails.attributes.map((size) => (
+                    <label
+                      key={size.id}
+                      style={{ marginRight: "10px" }}
+                    >
+                      <input
+                        type="radio"
+                        name="size"
+                        value={size.value}
+                        checked={selectedSize === size.value}
+                        onChange={() => handleSizeChange(size.value)}
+                      />
+                      {size.value}
+                    </label>
+                  ))}
+                </p>
+              </div>
 
-                <div className="flex gap-3 pb-2">
-                  <p className="text-amber-400 font-semibold">Price: </p>
-                  <p className="text-slate-400 line-through decoration-pink-500">
-                    ${productsDetails?.reg_price}
-                  </p>
-                  <p className="font-bold text-indigo-500">
-                    ${productsDetails?.sale_price}
-                  </p>
-                </div>
-                <div style={{ width: "400px" }} className="">
-                  <p>{productsDetails?.product_des}</p>
-                </div>
-                <div onClick={handleCartAdd}>
-                  <button className="rounded-md hover:text-white hover:bg-indigo-500 border border-indigo-500 bg-transparent text-indigo-500 transition px-4 py-2 mt-2">
-                    Add Cart <i className="fa-light fa-file-circle-info"></i>
-                  </button>
-                </div>
+              <div className="flex gap-3 pb-2">
+                <p className="text-amber-400 font-semibold">Price: </p>
+                <p className="text-slate-400 line-through decoration-pink-500">
+                  ${productsDetails?.reg_price}
+                </p>
+                <p className="font-bold text-indigo-500">
+                  ${productsDetails?.sale_price}
+                </p>
+              </div>
+              <div style={{ width: "400px" }} className="">
+                <p>{productsDetails?.product_des}</p>
+              </div>
+              <div onClick={handleCartAdd}>
+                <button className="rounded-md hover:text-white hover:bg-indigo-500 border border-indigo-500 bg-transparent text-indigo-500 transition px-4 py-2 mt-2">
+                  Add Cart <i className="fa-light fa-file-circle-info"></i>
+                </button>
               </div>
             </div>
           </div>
-        )}
-      </div>
-    </ContentWrapper>
+        </div>
+      )}
+    </div>
+  </ContentWrapper>
   );
 };
 

@@ -1,38 +1,24 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
-// import logo from '/logo.svg';
 import {
   faUser,
   faCartShopping
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.css';
-// import LogoutButton from '../../components/Logout/Logout';
-
-
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
 import LogoutButton from '../../components/logout/Logout';
 import { useAuth } from '../../context/AuthContext';
 import useCart from '../../hooks/useCart';
-// import useOutsideClick from '../../hooks/useOutsideClick';
 
 const Navbar = () => {
- 
   const navigate = useNavigate();
   const location = useLocation();
   const dropdownRef = useRef(null);
   const { user } = useAuth();
   const [selectedOption, setSelectedOption] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    navigate(`/${option}`);
-  };
-const [cart] = useCart()
-console.log('this is cart',cart)
+  const [cart] = useCart();
   const [show, setShow] = useState('top');
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -60,48 +46,34 @@ console.log('this is cart',cart)
     };
   }, [lastScrollY]);
 
-//   useOutsideClick(dropdownRef, () => {
-//     setIsDropdownOpen(false);
-//   });
-
-  const isHomePage = location.pathname === '/';
-
   return (
-    <header className={`header ${show} `}>
+    <header className={`header ${show} sm:flex sm:justify-between sm:items-center`}>
       <ContentWrapper>
         <div className="logo flex items-center justify-center gap-2" onClick={() => navigate('/')}>
-        {/* <img src={'logo'} alt="Tryotel Logo" width="33.958" height="33.93"/> */}
-        <h3 className={`font-semibold text-2xl text-white `}>MediaBook</h3>
+          <h3 className={`font-semibold text-2xl text-white`}>Classic IT</h3>
         </div>
-        <ul className={`menuItems`}>
+        <ul className={`menuItems sm:flex sm:gap-4`}>
           <li
             className={`menuItem ${
               selectedOption === 'media' ? 'active' : ''
             } `}
-            onClick={() => handleOptionClick('media')}
           >
             <div className="flex flex-col">
-             
-              <Link to="/product">Product</Link>
+              <Link to="/">Product</Link>
             </div>
           </li>
-          
           <li
-            className={`menuItem ${selectedOption === 'about' ? 'active' : ''}`}
-            // onClick={() => handleOptionClick('about')}
+            className={`menuItem ${selectedOption === 'cart' ? 'active' : ''}`}
           >
             <div className="flex flex-col">
-             
               <Link to="/cart">
-              <FontAwesomeIcon icon={faCartShopping} /> 
-              <span>{cart?.length || 0}</span>
+                <FontAwesomeIcon icon={faCartShopping} /> {`  `}
+                <span>{cart?.length || 0}</span>
               </Link>
             </div>
           </li>
-          
         </ul>
-
-        <div className={``}>
+        <div className={`sm:flex sm:items-center`}>
           {user ? (
             <div className="navbar-user-dropdown">
               <div
@@ -121,11 +93,6 @@ console.log('this is cart',cart)
               </div>
               {isDropdownOpen && (
                 <div className="navbar-dropdown-menu">
-                 
-                  <Link to="/about" className="navbar-dropdown-item">
-                    Profile
-                  </Link>
-                 
                   <button className="navbar-dropdown-item">
                     <LogoutButton />
                   </button>
@@ -144,3 +111,5 @@ console.log('this is cart',cart)
 };
 
 export default Navbar;
+
+
